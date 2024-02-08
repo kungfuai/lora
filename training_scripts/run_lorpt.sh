@@ -23,7 +23,7 @@ accelerate launch train_lora_w_ti.py \
   --lr_scheduler="constant" \
   --lr_warmup_steps=10 \
   --max_train_steps=100 \
-  --placeholder_token="<krk>" \
+  --placeholder_token="<xmas>" \
   --learnable_property="object"\
   --initializer_token="woman" \
   --save_steps=20 \
