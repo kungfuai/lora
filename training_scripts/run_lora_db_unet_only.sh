@@ -6,6 +6,8 @@ export OUTPUT_DIR="./output_examples/$(date +'%Y_%m_%d_%H_%M_%S')"
 
 mkdir -p $OUTPUT_DIR
 
+export PYTHONPATH=../:$PYTHONPATH
+
 accelerate launch train_lora_dreambooth.py \
   --pretrained_model_name_or_path=$MODEL_NAME  \
   --instance_data_dir=$INSTANCE_DIR \
