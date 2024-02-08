@@ -1,7 +1,12 @@
 #https://github.com/huggingface/diffusers/tree/main/examples/dreambooth
 export MODEL_NAME="runwayml/stable-diffusion-v1-5"
-export INSTANCE_DIR="./data_example_text"
-export OUTPUT_DIR="./output_example_lorpt"
+# export INSTANCE_DIR="./data_example_text"
+export INSTANCE_DIR="../../data_copy"
+export OUTPUT_DIR="./output_examples_lorpt/$(date +'%Y_%m_%d_%H_%M_%S')"
+
+mkdir -p $OUTPUT_DIR
+
+export PYTHONPATH=../:$PYTHONPATH
 
 accelerate launch train_lora_w_ti.py \
   --pretrained_model_name_or_path=$MODEL_NAME  \
@@ -16,12 +21,12 @@ accelerate launch train_lora_w_ti.py \
   --learning_rate_ti=5e-4 \
   --color_jitter \
   --lr_scheduler="constant" \
-  --lr_warmup_steps=100 \
-  --max_train_steps=5000 \
+  --lr_warmup_steps=10 \
+  --max_train_steps=100 \
   --placeholder_token="<krk>" \
   --learnable_property="object"\
   --initializer_token="woman" \
-  --save_steps=500 \
-  --unfreeze_lora_step=1500 \
+  --save_steps=20 \
+  --unfreeze_lora_step=30 \
   --stochastic_attribute="game character,3d render,4k,highres" # these attributes will be randomly appended to the prompts
   

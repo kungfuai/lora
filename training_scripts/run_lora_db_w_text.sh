@@ -22,4 +22,4 @@ accelerate launch train_lora_dreambooth.py \
   --color_jitter \
   --lr_scheduler="constant" \
   --lr_warmup_steps=0 \
-  --max_train_steps=10000
+  --max_train_steps=100
